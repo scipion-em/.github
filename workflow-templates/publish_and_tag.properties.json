@@ -1,12 +1,7 @@
 {
     "name": "Publish and tag",
     "description": "Workflow to publish master branch and tag it using standard __version__ approach as recommended at https://packaging.python.org/guides/single-sourcing-package-version/ sixth item.",
+    "creator": "I2PC team"
     "iconName": "pypi",
-    "categories": [
-        "Go"
-    ],
-    "filePatterns": [
-        "package.json$",
-        "^Dockerfile*"
-    ]
+    "categories": ["deployment"]
 }
