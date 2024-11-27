@@ -14,6 +14,7 @@ on:
         type: string
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# TODO: The run "Get version and tag" can be changed to: python -c "import warp; print('v' + warp.__version__);"
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
