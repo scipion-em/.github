@@ -25,8 +25,8 @@ jobs:
         python-version: '3.8'
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install setuptools twine build wheel
+        python -m pip install --upgrade pip setuptools
+        pip install twine build wheel
         pip install scipion-pyworkflow scipion-em scipion-app
     - name: Check extra requirements
       if: ${{ hashFiles('requirements.txt') != '' }}
