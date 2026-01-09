@@ -31,7 +31,7 @@ jobs:
         pip install twine build wheel
         pip install setuptools -U
     - name: Install scipipon core
-      run: pip install "git+https://github.com/scipion-em/scipion-pyworkflow.git@master" "git+https://github.com/scipion-em/scipion-em.git@master" "git+https://github.com/scipion-em/scipion-pyworkflow.git@master"
+      run: pip install "git+https://github.com/scipion-em/scipion-pyworkflow.git@master" "git+https://github.com/scipion-em/scipion-em.git@master" "git+https://github.com/scipion-em/scipion-app.git@master"
     - name: Check extra requirements
       if: ${{ hashFiles('requirements.txt') != '' }}
       run: pip install -r requirements.txt
