@@ -12,6 +12,11 @@ on:
         description: 'Name of the folder that contains __version__'
         required: true
         type: string
+    secrets:
+      PYPI_API_TOKEN:
+        required: true
+      PYPI_COMMENT:
+        required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 # TODO: The run "Get version and tag" can be changed to: python -c "import warp; print('v' + warp.__version__);"
@@ -19,9 +24,9 @@ jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.8'
     - name: Install pip
@@ -41,7 +46,7 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
         python -m build --no-isolation
-        twine upload dist/* -c "${{ secrets.PYPI_COMMENT }}"
+        twine upload dist/* -c "${{ secrets.PYPI_COMMENT }}" || twine upload dist/*
     - name: Get version and tag
       run: |
         export PACKAGE_VERSION=$(python -c "import ${{ inputs.folder }}; print('VERSION', 'v'+${{ inputs.folder }}.__version__)" | grep VERSION | sed "s/VERSION //g")
